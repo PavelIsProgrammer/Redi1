@@ -65,6 +65,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
                 }
             }
             spannableString.setSpan(clickableSpan, 24, spannableString.length, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            tvAlreadyHaveAnAccount.movementMethod = LinkMovementMethod()
             tvAlreadyHaveAnAccount.text = spannableString
 
             vpOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
