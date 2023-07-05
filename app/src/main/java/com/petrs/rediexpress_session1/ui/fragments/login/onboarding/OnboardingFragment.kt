@@ -48,13 +48,13 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
 
             btnSignUp.setOnClickListener {
                 viewModel.changeOnboardingStatus()
-//                findNavController().navigate()
+                findNavController().navigate(R.id.action_onboardingFragment_to_emptyFragment)
             }
 
             val spannableString = SpannableString(getString(R.string.text_already_have_an_account_sign_in))
             val clickableSpan = object : ClickableSpan() {
                 override fun onClick(widget: View) {
-//                    findNavController().navigate()
+                    findNavController().navigate(R.id.action_onboardingFragment_to_emptyFragment)
                 }
 
                 override fun updateDrawState(ds: TextPaint) {

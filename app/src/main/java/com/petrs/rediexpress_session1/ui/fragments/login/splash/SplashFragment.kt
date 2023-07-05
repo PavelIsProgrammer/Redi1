@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.petrs.rediexpress_session1.R
 import com.petrs.rediexpress_session1.databinding.FragmentSplashBinding
 import com.petrs.rediexpress_session1.domain.DomainResult
 import com.petrs.rediexpress_session1.ui.base.BaseFragment
@@ -36,7 +37,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
                     is DomainResult.Loading -> {}
                     is DomainResult.Success -> {
                         if (it.data) {
-//                            findNavController().navigate()
+                            findNavController().navigate(R.id.action_splashFragment_to_emptyFragment)
                         } else {
                             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToOnboardingFragment())
                         }

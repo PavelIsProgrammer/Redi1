@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_splashFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_emptyFragment"
+            app:destination="@id/emptyFragment" />
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.petrs.rediexpress_session1.ui.fragments.login.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" />
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_emptyFragment"
+            app:destination="@id/emptyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emptyFragment"
+        android:name="com.petrs.rediexpress_session1.EmptyFragment"
+        android:label="fragment_empty"
+        tools:layout="@layout/fragment_empty" />
 </navigation>
