@@ -1,10 +1,11 @@
-package com.petrs.rediexpress_session1
+package com.petrs.rediexpress_session1.ui.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.petrs.rediexpress_session1.R
 
 class EmptyFragment : Fragment() {
 

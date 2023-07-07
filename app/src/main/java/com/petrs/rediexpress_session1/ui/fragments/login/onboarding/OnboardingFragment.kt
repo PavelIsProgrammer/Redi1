@@ -3,6 +3,7 @@ package com.petrs.rediexpress_session1.ui.fragments.login.onboarding
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextPaint
+import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -26,6 +27,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
     FragmentOnboardingBinding::inflate
 ) {
     override val viewModel: OnboardingViewModel by viewModel()
+    private var signInOrUp = 0
 
     override fun initView() {
         binding.apply {
@@ -39,6 +41,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
             ) { _, _ -> }.attach()
 
             btnSkip.setOnClickListener {
+                signInOrUp = 0
                 viewModel.changeOnboardingStatus()
             }
 
@@ -47,14 +50,15 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
             }
 
             btnSignUp.setOnClickListener {
+                signInOrUp = 1
                 viewModel.changeOnboardingStatus()
-                findNavController().navigate(R.id.action_onboardingFragment_to_emptyFragment)
             }
 
             val spannableString = SpannableString(getString(R.string.text_already_have_an_account_sign_in))
             val clickableSpan = object : ClickableSpan() {
                 override fun onClick(widget: View) {
-                    findNavController().navigate(R.id.action_onboardingFragment_to_emptyFragment)
+                    signInOrUp = 0
+                    viewModel.changeOnboardingStatus()
                 }
 
                 override fun updateDrawState(ds: TextPaint) {
@@ -65,6 +69,7 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
                 }
             }
             spannableString.setSpan(clickableSpan, 24, spannableString.length, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            tvAlreadyHaveAnAccount.movementMethod = LinkMovementMethod()
             tvAlreadyHaveAnAccount.text = spannableString
 
             vpOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -95,7 +100,10 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding, OnboardingVie
                     is DomainResult.Error -> {}
                     is DomainResult.Loading -> {}
                     is DomainResult.Success -> {
-//                        findNavController().navigate(R.id.action_onboardingFragment_to_signInFragment)
+                        when (signInOrUp) {
+                            0 -> findNavController().navigate(R.id.action_onboardingFragment_to_signInFragment)
+                            else -> findNavController().navigate(R.id.action_onboardingFragment_to_signUpFragment)
+                        }
                     }
                 }
             }

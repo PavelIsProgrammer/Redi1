@@ -10,4 +10,5 @@
 
     <color name="grey_A7">#A7A7A7</color>
     <color name="grey_3A">#3A3A3A</color>
+    <color name="grey_hint">#CFCFCF</color>
 </resources>

@@ -37,7 +37,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(
                     is DomainResult.Loading -> {}
                     is DomainResult.Success -> {
                         if (it.data) {
-                            findNavController().navigate(R.id.action_splashFragment_to_emptyFragment)
+                            findNavController().navigate(R.id.action_splashFragment_to_signInFragment)
                         } else {
                             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToOnboardingFragment())
                         }

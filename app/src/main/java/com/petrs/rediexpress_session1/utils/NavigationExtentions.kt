@@ -2,9 +2,13 @@ package com.petrs.rediexpress_session1.utils
 
 import android.content.Intent
 import android.util.SparseArray
+import android.view.View
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.petrs.rediexpress_session1.R
 import com.petrs.rediexpress_session1.ui.activity.main.MainActivity
 
 fun BottomNavigationView.setupWithNavController(
@@ -12,7 +16,8 @@ fun BottomNavigationView.setupWithNavController(
     fragmentManager: FragmentManager,
     containerId: Int,
     intent: Intent,
-    activity: MainActivity
+    activity: MainActivity,
+    selectableTopViews: List<View>
 ) {
     val graphIdToTagMap = SparseArray<String>()
 
@@ -58,6 +63,34 @@ fun BottomNavigationView.setupWithNavController(
                     .commit()
                 fragmentManager.moveToTopOfBackStack(newlySelectedItemTag)
                 selectedItemTag = newlySelectedItemTag
+
+                when (item.itemId) {
+                    R.id.home -> {
+                        selectableTopViews[0].isVisible = true
+                        selectableTopViews[1].isInvisible = true
+                        selectableTopViews[2].isInvisible = true
+                        selectableTopViews[3].isInvisible = true
+                    }
+                    R.id.wallet -> {
+                        selectableTopViews[0].isInvisible = true
+                        selectableTopViews[1].isVisible = true
+                        selectableTopViews[2].isInvisible = true
+                        selectableTopViews[3].isInvisible = true
+                    }
+                    R.id.track -> {
+                        selectableTopViews[0].isInvisible = true
+                        selectableTopViews[1].isInvisible = true
+                        selectableTopViews[2].isVisible = true
+                        selectableTopViews[3].isInvisible = true
+                    }
+                    R.id.profile -> {
+                        selectableTopViews[0].isInvisible = true
+                        selectableTopViews[1].isInvisible = true
+                        selectableTopViews[2].isInvisible = true
+                        selectableTopViews[3].isVisible = true
+                    }
+                }
+
                 true
             } else {
                 false
