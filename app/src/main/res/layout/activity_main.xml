@@ -22,12 +22,13 @@
         android:background="@color/transparent"
         app:elevation="0dp"
         app:itemIconTint="@drawable/bottom_nav_bar_color"
-        app:itemTextColor="@drawable/bottom_nav_bar_color"
+        app:itemActiveIndicatorStyle="@color/transparent"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:itemTextColor="@drawable/bottom_nav_bar_color"
+        app:menu="@menu/bottom_navigation_menu"/>
 
     <View
         android:id="@+id/selected_home"
